@@ -2,6 +2,9 @@
 from __future__ import unicode_literals
 
 from django.views.generic import ListView
+from django.contrib import messages
+from django.core.urlresolvers import reverse_lazy
+from django.shortcuts import redirect
 
 from models import Projects
 from forms import ContactMessageForm
@@ -41,11 +44,16 @@ class MainPageView(ListView):
             'subject': 'Сообщение из моего сайта-визитки',
             'message': request.POST['message']
         }
-
         self.form = ContactMessageForm(form_data)
+
         if self.form.is_valid():
             self.form.send_email()
+            success_msg = 'Спасибо за ваше письмо!'
+            messages.add_message(self.request, messages.SUCCESS, success_msg)
 
-        return self.get(request, *args, **kwargs)
+        else:
+            messages.add_message(self.request, messages.ERROR, self.form.errors.values()[0][0])
+
+        return redirect(reverse_lazy('main')+'#footer')
 
 

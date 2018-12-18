@@ -4031,6 +4031,15 @@ input, select, textarea {
 					color: inherit;
 				}
 
+	p.success{
+		color: #28da30;
+		font-weight: bold;
+	}
+	p.error{
+		color: #d83232;
+		font-weight: bold;
+	}
+
 	@media screen and (max-width: 1280px) {
 
 		#footer {
@@ -4116,3 +4125,5 @@ input, select, textarea {
 		}
 
 	}
+
+

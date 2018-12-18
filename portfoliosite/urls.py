@@ -21,7 +21,7 @@ from main_app.views import MainPageView
 import settings
 
 urlpatterns = [
-    url(r'^$', MainPageView.as_view()),
+    url(r'^$', MainPageView.as_view(), name='main'),
     url(r'^admin/', admin.site.urls),
 ]
 

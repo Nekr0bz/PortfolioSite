@@ -71,7 +71,13 @@
 					<section id="footer">
 						<div class="inner">
 							<h2 class="major">Контакты</h2>
-							<p></p>
+							{% if messages %}
+								{% for message in messages %}
+									<p class="{{ message.tags }}">{{ message }}</p>
+								{% endfor %}
+								{% else %}
+								<p>{{ default_text }}</p>
+							{% endif %}
 							<form method="post">
 								{% csrf_token %}
 								<div class="fields">
