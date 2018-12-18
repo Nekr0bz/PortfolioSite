@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+		<title>Портфолио Мирзаханяна Бориса</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{%get_static_prefix%}/vendors/css/main.css" />
+		<noscript><link rel="stylesheet" href="{%get_static_prefix%}/vendors/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="#banner" class="scrolly">Сайт-визитка Мирзаханяна Бориса</a></h1>
+						<nav>
+							<a href="#menu">Меню</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Меню</h2>
+							<ul class="links">
+								<li><a href="#banner" class="scrolly">Обо мне</a></li>
+								<li><a href="#wrapper" class="scrolly">Мои работы</a></li>
+								<li><a href="#footer" class="scrolly">Связь со мной</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<h2>Мирзаханян Борис</h2>
+							<p>back - end side web developer / Python (Django) - programmer  </a></p>
+						</div>
+					</section>
+
+				<!-- Wrapper -->
+					{% for object in object_list  %}
+						<section id="wrapper">
+								<section class="wrapper spotlight  {% cycle ' ' 'alt' %}
+								{% cycle 'style1' 'style2' 'style3' 'style4' 'style5' 'style0'%}">
+									<div class="inner">
+										<a href="#" class="image"><img src="{%get_media_prefix %}{{object.img}}" alt="" /></a>
+										<div class="content">
+											<h2 class="major">{{object.title}}</h2>
+											<p>L{{object.description}}</p>
+											<p>
+												{% if  object.github_link %}
+												<a href="{{object.github_link }}" class="btn"><i class="fa fa-github fa-3x"></i></a>
+												{% endif %}
+												{% if  object.site_link %}
+												<a href="{{object.site_link}}" class="btn special" style="font-size: 1.12em"></a>
+												{% endif %}
+											</p>
+										</div>
+									</div>
+								</section>
+						</section>
+					{% endfor %}
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<h2 class="major">Контакты</h2>
+							<p></p>
+							<form method="post">
+								{% csrf_token %}
+								<div class="fields">
+									<div class="field">
+										<label for="name">Имя</label>
+										{{ form.name }}
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										{{ form.email }}
+									</div>
+									<!--<div class="field">
+										<label for="subject">Тема сообщения</label>
+										{{ form.subject }}
+									</div>-->
+									<div class="field">
+										<label for="message">Сообщение</label>
+										{{ form.message }}
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Отправить сообщение" /></li>
+								</ul>
+							</form>
+							<ul class="contact">
+								<li class="fa-home">Санкт-Петербург</li>
+								<li class="fa-phone">+7 (965) 754 04 51</li>
+								<li class="fa-envelope"><a href="https://yandex.ru">nekr0bz@yandex.ru</a></li>
+								<li class="fa-github"><a href="https://github.com/Nekr0bz">github.com/Nekr0bz</a></li>
+								<li class="fa-id-card"><a href="https://spb.hh.ru/resume/0b31a3d7ff0427e1990039ed1f4c6e50326347">Резюме</a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{%get_static_prefix%}/vendors/js/jquery.min.js"></script>
+			<script src="{%get_static_prefix%}/vendors/js/jquery.scrollex.min.js"></script>
+			<script src="{%get_static_prefix%}/vendors/js/jquery.scrolly.min.js"></script>
+			<script src="{%get_static_prefix%}/vendors/js/browser.min.js"></script>
+			<script src="{%get_static_prefix%}/vendors/js/breakpoints.min.js"></script>
+			<script src="{%get_static_prefix%}/vendors/js/util.js"></script>
+			<script src="{%get_static_prefix%}/vendors/js/main.js"></script>
+
+	</body>
+</html>

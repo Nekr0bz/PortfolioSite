@@ -13,7 +13,7 @@ class MainPageView(ListView):
     за главную страницу сайта
     """
     model = Projects
-    template_name = 'main_app/main.html'
+    template_name = 'main_app/index.html'
     form = None
 
     def get(self, request, *args, **kwargs):
@@ -38,7 +38,7 @@ class MainPageView(ListView):
         form_data = {
             'name': request.POST['name'],
             'email': request.POST['email'],
-            'subject': request.POST['subject'],
+            'subject': 'Сообщение из моего сайта-визитки',
             'message': request.POST['message']
         }
 
