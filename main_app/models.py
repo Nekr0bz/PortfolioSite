@@ -2,6 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.models.signals import pre_delete, pre_save
+
+from signals import del_img__pre_delete, del_img__pre_save
 
 
 class Projects(models.Model):
@@ -24,3 +27,8 @@ class Projects(models.Model):
         Строковое представление объекта
         """
         return self.title
+
+
+# Регистрация callback-функций сигналов
+pre_delete.connect(del_img__pre_delete, sender=Projects)
+pre_save.connect(del_img__pre_save, sender=Projects)
