@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url, static
 from django.contrib import admin
 
+from main_app.views import MainPageView
+
 import settings
 
 urlpatterns = [
+    url(r'^$', MainPageView.as_view()),
     url(r'^admin/', admin.site.urls),
 ]
 
