@@ -5,6 +5,7 @@
 		<title>Портфолио Мирзаханяна Бориса</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="shortcut icon" type="image/png" href="{%get_static_prefix%}/vendors/images/favicon.ico">
 		<link rel="stylesheet" href="{%get_static_prefix%}/vendors/css/main.css" />
 		<noscript><link rel="stylesheet" href="{%get_static_prefix%}/vendors/css/noscript.css" /></noscript>
 	</head>
@@ -44,8 +45,9 @@
 					</section>
 
 				<!-- Wrapper -->
-					{% for object in object_list  %}
+
 						<section id="wrapper">
+							{% for object in object_list  %}
 								<section class="wrapper spotlight  {% cycle ' ' 'alt' %}
 								{% cycle 'style1' 'style2' 'style3' 'style4' 'style5' 'style0'%}">
 									<div class="inner">
@@ -64,8 +66,9 @@
 										</div>
 									</div>
 								</section>
+							{% endfor %}
 						</section>
-					{% endfor %}
+
 
 				<!-- Footer -->
 					<section id="footer">
